@@ -60,8 +60,11 @@
                 <img src="https://cdn0.iconfinder.com/data/icons/weather-minimalist-1/48/weather-23-512.png"
                     height="150" width="150" style="font-size:120px"></i>
                 <p>Displays Kp Index for the Next 3 Days</p>
-                <p></p>
-
+                <p>
+                  <button onclick="getKp()">Get Kp index</button>
+                </p>
+                Kp level for the next 3 days is:
+                <p id= "kpDisplay"></p>
             </div>
         </div>
     </div>
@@ -95,7 +98,17 @@
             function w3_close() {
                 document.getElementById("mySidebar").style.display = "none";
             }
-
+            var getKp = function(){
+              var request = new XMLHttpRequest();
+              request.open("GET",
+              "https://api.auroras.live/v1/?type=ace&data=kp&format=json")
+              request.send();
+              request.onload = function(){
+                var kpData = JSON.parse(this.response);
+                var kp = kpData.kp;
+                document.getElementById("kpDisplay").innerHTML = kp;
+              }
+          }
 
         </script>
 
