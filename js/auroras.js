@@ -1,4 +1,4 @@
-// <!-- Script for Sidebar, Tabs, Accordions, Progress bars and slideshows -->
+//  Script for Sidebar
            function w3_open() {
                 var x = document.getElementById("mySidebar");
                 x.style.width = "100%";
